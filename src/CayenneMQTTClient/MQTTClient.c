@@ -243,7 +243,8 @@ exit:
 int cycle(MQTTClient* c, Timer* timer)
 {
     // read the socket, see what work is due
-    unsigned short packet_type = readPacket(c, timer);
+    //unsigned short packet_type = readPacket(c, timer);
+    int packet_type = readPacket(c, timer); //readPacket returns -1, so it cannot be unsigned short. It blocks MQTTYield() 
     
     int len = 0,
         rc = MQTT_SUCCESS;
